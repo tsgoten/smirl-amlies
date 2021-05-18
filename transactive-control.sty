@@ -1,0 +1,35 @@
+% Paper Style for Transactive Control Work at RAISE Lab
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{transactive-control}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amsthm}
+
+\DeclareMathOperator{\E}{\mathbb{E}}
+
+%% Preamble %%
+% Removes citation information below abstract
+\settopmatter{printacmref=false} 
+% Removes footnote with conference information in first column
+\renewcommand\footnotetextcopyrightpermission[1]{} 
+% Removes running headers
+\pagestyle{plain} 
+% Fonts and Margins
+\AtBeginDocument{\providecommand\BibTeX{{
+\normalfont B\kern-0.5em{\scshape i\kern-0.25em b}\kern-0.8em\TeX}
+}}
+% Remove Page Numbering
+\pagenumbering{gobble}
+%% End of Preamble %%
+
+% Commands
+\newcommand{\tsc}[1]{\textsuperscript{#1}} %shorthand for superscripts
+\newcommand{\entropy}[1]{\mathcal{H}\left( #1 \right)}
+
+% Colors 
+\newcommand{\red}[1]{{\color{red} #1}}
+\newcommand{\blue}[1]{{\color{blue} #1}}
+
+
+

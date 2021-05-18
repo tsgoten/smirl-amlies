@@ -1,0 +1,26 @@
+\documentclass[acmsmall, sigconf, screen]{acmart}
+% All commands, packages, etc in style file
+\usepackage{transactive-control}
+
+\begin{document}
+% Title, Authors and Abstract
+\input{sections/title-authors-abstract}
+\pagestyle{plain}
+\maketitle
+
+% Introduction
+\input{sections/introduction}
+% Background on RL and SMiRL
+\input{sections/background}
+% Methods
+\input{sections/methods}
+% Results
+\input{sections/smirl-results}
+% \input{sections/fixedload-results} 
+% Discussion: future work and acknowledgements
+\input{sections/discussion}
+% Bibilography 
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{citations}
+
+\end{document}

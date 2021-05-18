@@ -1,0 +1,42 @@
+\section{Background} \label{sec:background}
+
+\subsection{Reinforcement Learning}
+Reinforcement learning (RL) is a type of agent-based machine learning 
+where control of a complex system requires actions that maximize the agent's outcome \citep{sutton2018reinforcement}, 
+i.e. they seek to optimize the expected sum of rewards for actions ($a_t$) and states ($s_t$) with a policy $p_\pi$ and reward given by $ r $ 
+in a policy parametirized by 
+$\theta$; i.e.,  $J(\theta) = \E\sum_{s_t,a_t \sim p_{\pi}}[r(s_t, a_t)]$. 
+Classical RL saw early use cases in backgammon \citep{tesauro1994td}, 
+the cart-pole problem, and Atari \citep{mnih2013playing}. 
+
+Policy gradient methods are a class of RL algorithms used to train policy networks that suggest actions.
+We propose the use of a variant of these methods, Proximal Policy Optimization (PPO) \citep{schulmanPPO}, which works by computing an estimator of the policy gradient 
+and plugging it into a stochastic gradient ascent algorithm. 
+
+RL has been applied to a number of demand response situations, but almost all the work centers on agents that directly schedule resources \citep{6963416}, \citep{7018632}, \citep{6848212}, \citep{6915886}, \citep{RAJU2015231}, \citep{FUSELLI2013148}. RL architectures can vary widely, for example Kofinas et. al. deploys a fuzzy Q-learning multi-agent that learns to coordinate appliances to increase reliability \citep{KOFINAS201853}. In another illustrative example, Mbuwir et. al. manages a battery directly using batch Q-learning \citep{en10111846}. 
+
+
+\subsection{Surprise Minimizing Reinforcement Learning}
+
+It is desireable for both the human subjects and the agent that some stability of control is encouraged. 
+Incentivizing the agent to minimize the surprise it experiences is equivalent to incentivizing it to minimize peoples' change in energy usage across time. Forcing the agent to do so would force it to learn a strategy. This corresponds to adjusting people's habits in a stable system rather than forcing them to confront and attempt to undestand an unstable one.
+Additionally, people behave predictably on aggregate, and thus choosing to minimize surprise may in fact make it easier for the agent to learn.
+
+
+Surprise Minimizing Reinforcement Learning (SMiRL) is an algorithm that aims to reduce 
+the entropy of visited states. SMiRL is useful when the environment 
+provides sufficient unexpected and novel events for learning 
+where the challenge for the agent is to maintain a 
+steady equilibrium state. \citep{smirl}
+
+SMiRL maintains a distribution $ p_{\theta}(s) $ about which states are likely under its current 
+policy. The agent then modifies its policy $ \pi $ so that it encounters states $ s $ 
+with high $ p_{\theta}(s) $, as well as to seek out states that will change the model $ p_{\theta}(s) $ so 
+that future states are more likely. 
+
+We make use of SMiRL as an auxiliary reward in addition to our 
+usual reward to calculate a combined reward
+$$ r_{\text{combined}} = r_{\text{energy}} + \alpha r_{\text{SMiRL}} $$
+With a SMiRL weight $ \alpha $ as a measure of how much the SMiRL reward influences
+the total reward. 
+We will describe the explicit formulation of the SMiRL reward in Section \ref{sec:methods}. 

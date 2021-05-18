@@ -1,0 +1,41 @@
+\section{Discussion} \label{sec:discussion}
+
+RL controllers are particularly well suited for dynamic data driven environments with unknown 
+and changing system models. 
+Whereas a non-RL controller could potentially require consumer models, 
+or try to learn those explicitly, an RL controller can adapt to dynamically changing 
+resources over time. 
+The novelty of our proposition is in using reinforcement learning to preemptively 
+offer optimal pricing without soliciting demand/supply bids, and purely from historical 
+and forecasted data. 
+
+A careful observer may note in Figure \ref{fig:observations} that although the energy consumptions are certainly minimizing the price that a building manager might pay (i.e. the controller's reward), large peaks would be unfavorable for the grid if incentivized large scale. We argue that this is not a defect perse of the SMiRL modification; only the exploitation of an externality our simulation does not account for. First, the SMiRL agent is achieving a goal: environment stability, evidenced in the tightening of confidence bounds around energy consumption outcomes. Outcome behavior confidence is accomplished by incentivizing people's consumption tightly up against the shoulder of TOU pricing because the mechanics of the simulated office worker cause it to curtail and, notably, \textit{shift} energy when offered high prices. Therefore the controller learns to rely on shifting. While the SMiRL + PPO and PPO agents are equal in the energy reward the controller receives, the inclusion of the SMiRL reward creates more consistent energy usage. The behavior is optimal given the externalities we have encoded (or not encoded) into the reward, so should not be seen as a deficit of the controller. It would be straightforward, and the subject of future work, to modify the reward in order to direct the controller to spread energy evenly amonst non-peak hours. 
+
+After consider this, SMiRL has shown promising results in minimizing surprise, 
+and improvements in learning speeds 
+support our hypothesis that SMiRL can take advantage of inherent predictability in people's 
+energy consumption. 
+
+From the energy consumptions in Figure \ref{fig:observations} we note that SMiRL induces faster convergence
+to cheaper energy consumptions. 
+For a building that uses a SMiRL based controller, this translates into direct savings in 
+energy cost. 
+
+% here would be appropriate to compare figures 2 and 3
+
+While the goals of SMiRL stand in contrast to proven entropy maximizing RL algorithms, the results of our simulation and related work show that in appropriate environments, the 
+auxiliary SMiRL reward can improve learning while also letting the RL agent explore. We argue that a human-in-the-loop environment is necessarily complex enough that encouraging surprise minimization encourages the agent to more quickly grasp the latent similarities that govern the environment. We look towards our experiment to continue to demonstrate this. 
+
+\subsection{Future Research}
+SMiRL can handle variations in a $k$-discrete state-space by creating $k$ separate buffers, one for each variation of the state-space, that shrink the action sampling towards each $k$ category. We propose to adapt this to a continuous state-space by clustering main categories of observation. One of the main inputs to the state space is price signals, so we propose to cluster based on a semantic feature search proposed in \citep{afzalan2019semantic} for building load profiles. In this manner, we will chart novel territory in the SMiRL domain and accommodate more complex environments. 
+More practically, we will use this enhancement directly in the rollout of our agent for our office-scale demand response experiment. 
+
+% \subsubsection{Microgrid Environment}
+% We can test the benefits of SMiRL in a microgrid environment where various buildings 
+% act as prosumers, consuming and providing energy into the grid, and the controller 
+% is set to maximize profits or solve the market. 
+% We propose that the stability features offered by SMiRL can be very useful in solving 
+% dynamic systems like an energy price market. 
+
+\subsection{Acknowledgements}
+We gratefully acknowledge the input of Manan Khattar, Austin Jang, and Dustin Luong as working group collaborators who met weekly on their own thrusts and provided advice (and at times a listening ear.) We give thanks to Andreea Bobu and Peter Hendrickson who are graduate students that gave guidance during this process. Finally, we would like to thank Glen Berseth for his initial work on SMiRL and Pieter Abbeel and Sergey Levine for advice throughout the process.  

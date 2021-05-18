@@ -1,0 +1,36 @@
+\section{Introduction} \label{sec:intro}
+The electricity grid may be seen as a beautifully decentralized organism: one in which individual energy demands are met by individual generators largely without direct coordination or knowledge of recipient. 
+Market signals simply translate into generators commanding their resources to increase or decrease. 
+However, as volatile resources like wind and solar replace on-demand resources like most fossil fuels 
+-- an important development in the drive to decarbonize the energy supply and tackle climate change -- a potentially worrying question arises: what happens to demand when the generation becomes decoupled from commands; 
+i.e., when energy is demanded but the sun isn't shining? 
+Grids that do not adequately prepare for this question will face daunting consequences, 
+ranging from curtailment of resources \citep{spangher2020prospective} to voltage instability and physical damage.  
+
+A common solution is demand response: a strategy in which customers are incentivized to defer loads to periods of the day where energy is plentiful. 
+Given the lack of material infrastructure and cheapness of the incentives, it has several positives above physical energy storage systems. 
+% TODO: Look over
+One primary application of demand response is in buildings, and both central-level appliance coordination and building-level demand response has been thoroughly studied in residential and industrial settings
+(\citep{asadinejad2018evaluation}, \citep{ma2015cooperative}, \citep{li2018integrating}, \citep{yoon2014dynamic}, \citep{johnson2015dynamic}.)
+However, while physical infrastructure of office buildings has been studied for demand response (\citep{8248801}), 
+there has been no large scale experiment aimed to elicit a behavioral demand response. 
+
+The lack of experiment is perhaps understandable when we consider that the majority of offices do not have a mechanism to pass energy prices onto office workers\citep{das2019novel}. 
+If they did, however, not only could a large fleet of decentralized batteries 
+-- laptops, cell phone chargers, etc. -- 
+be coordinated to function as a large deferable resource, 
+but building managers could save money\citep{das2020occupants}.
+
+The SinBerBEST collaboration has developed a Social Game that facilitates workers to engage in competition around energy \citep{konstantakopoulos2019deep}, \citep{konstantakopoulos2019design}. 
+Through this framework, a first-of-its-kind experiment has been proposed to implement behavioral demand response within an office building \citep{spangher2020prospective}. 
+Prior work has proposed to describe an hourly price-setting controller that learns how to optimize its prices \citep{spangher2020augmenting}. 
+
+However, given the costliness of iterations in this experiment, 
+further work in simulation is needed to refine a controller that can adapt the most quickly to the complex behaviors of office workers. 
+
+We endeavor to report one such refinement. 
+We will in Section \ref{sec:background} contextualize the architecture of our reinforcement learning controller within the general domain of reinforcement learning 
+and introduce a suprise minimizing algorithm that can further improve this controller.
+In Section \ref{sec:methods} we will describe the simulation setup and the specific modification we propose. 
+In Section \ref{sec:results} we will give results. 
+Finally, in Section \ref{sec:discussion} we will discuss implications of the controller and the future work this entails. 
